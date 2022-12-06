@@ -1,0 +1,908 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>HTML笔记</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#center网页的基本标签center">网页的基本标签</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#标题标签">标题标签</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#段落标签">段落标签</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#换行标签">换行标签</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#水平线标签">水平线标签</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#字体样式标签">字体样式标签</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#粗体">粗体</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#斜体">斜体</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#注释和特殊符号">注释和特殊符号</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#特殊符号">特殊符号</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#center图像标签center">图像标签</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#常见的图像格式">常见的图像格式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#图像标签格式">图像标签格式</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#src必填">src(必填)</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#相对地址">相对地址</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#绝对地址">绝对地址</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#alt必填）">alt（必填）</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#title">title</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#width和height">width和height</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#center链接标签center">链接标签</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#href必填">href(必填)</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#target">target</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#center超链接center">超链接</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#页面间链接">页面间链接</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#锚链接">锚链接</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#功能性链接">功能性链接</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#center行内元素和块元素center">行内元素和块元素</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#块元素">块元素</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#行内元素">行内元素 </a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#center列表标签center">列表标签</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#无序列表">无序列表</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#有序列表">有序列表</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#自定义列表">自定义列表</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#center表格标签center">表格标签</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#行">行</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列">列</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#跨行跨列">跨行跨列</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#center媒体元素视频和音频center">媒体元素:视频和音频</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#视频元素">视频元素</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#音频元素">音频元素</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#center页面结构分析center">页面结构分析</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#centeriframe内联框架center">iframe内联框架</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#center表单语法center">表单语法</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#单选框标签">单选框标签</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#多选框标签">多选框标签</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#按钮">按钮</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#列表框文本域和文件域">列表框文本域和文件域</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#下拉框">下拉框</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#文本域">文本域</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#文件域">文件域</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#搜索框滑块和简单验证">搜索框滑块和简单验证</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#邮件验证">邮件验证</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#网址验证">网址验证</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#数字验证">数字验证</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#滑块">滑块</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#搜索">搜索</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#表单的应用">表单的应用</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#隐藏域">隐藏域</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#只读">只读</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#禁用">禁用</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#增强鼠标可用性">增强鼠标可用性</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#表单的初级验证">表单的初级验证</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#palceholder-提示信息">palceholder 提示信息</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#required--元素不能为空">required  元素不能为空</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#pattern-正则表达式">pattern 正则表达式</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='center网页的基本标签center'><center><span>网页的基本标签</span></center></h1><h2 id='标题标签'><span>标题标签</span></h2><blockquote><p><span>&lt;</span><span>h&gt;</span><span>&lt;</span><span>/h&gt;</span></p></blockquote><p>&nbsp;</p><p><span>&lt;</span><span>h1&gt;一级标签</span><span>&lt;</span><span>/h1&gt;</span>
+<span>&lt;</span><span>h2&gt;二级标签</span><span>&lt;</span><span>/h2&gt;</span>
+<span>效果:</span></p><h1>一级标签</h1>
+<h2>二级标签</h2><h2 id='段落标签'><span>段落标签</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span><span>&lt;</span><span>/p&gt;</span></p></blockquote><p><span>先输入一个“p”再摁Tab，自动补全 </span></p><h2 id='换行标签'><span>换行标签</span></h2><blockquote><p><span>&lt;</span><span>br&gt;</span></p></blockquote><h2 id='水平线标签'><span>水平线标签</span></h2><blockquote><p><span>&lt;</span><span>hr&gt;</span></p></blockquote><hr><h2 id='字体样式标签'><span>字体样式标签</span></h2><p><span>以Helloworld为例</span></p><h3 id='粗体'><span>粗体</span></h3><blockquote><p><span>&lt;</span><span>strong&gt;</span><span>&lt;</span><span>/strong&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果:</span><strong><span>Helloworld</span></strong></p><h3 id='斜体'><span>斜体</span></h3><blockquote><p><span>&lt;</span><span>em&gt;</span><span>&lt;</span><span>/em&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果:</span><em><span>Helloworld</span></em></p><h2 id='注释和特殊符号'><span>注释和特殊符号</span></h2><h3 id='特殊符号'><span>特殊符号</span></h3><blockquote><p><strong><span>注释:</span><span>&lt;</span><span>!--注释内容--&gt;</span></strong></p></blockquote><blockquote><p><strong><span>空格: </span><span>&amp;</span><span>nbsp;</span></strong></p></blockquote><p>&nbsp;</p><p><span>空</span><span>&amp;</span><span>nbsp;</span><span>&amp;</span><span>nbsp;</span><span>&amp;</span><span>nbsp;</span><span>&amp;</span><span>nbsp;</span><span>&amp;</span><span>nbsp格</span></p><p><span>效果：空</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>格</span></p><p>&nbsp;</p><blockquote><p><span>其他的特殊符号</span></p></blockquote><figure><table><thead><tr><th><span>符号写法</span></th><th><span>符号意义</span></th></tr></thead><tbody><tr><td><span>&amp;</span><span>gt;</span></td><td>&gt;</td></tr><tr><td><span>&amp;</span><span>lt;</span></td><td>&lt;</td></tr><tr><td><span>&amp;</span><span>copy;</span></td><td>&copy;</td></tr></tbody></table></figure><p><span>等等。</span></p><p><span>如要寻找某一特殊字符，请百度。</span></p><p>&nbsp;</p><p>&nbsp;</p><h1 id='center图像标签center'><center><span>图像标签</span></center></h1><h2 id='常见的图像格式'><span>常见的图像格式</span></h2><blockquote><p><span>JPG</span>
+<span>GIF</span>
+<span>PNG</span>
+<span>BMP(位图)</span></p></blockquote><h2 id='图像标签格式'><span>图像标签格式</span></h2><blockquote><p><strong><span>&lt;</span><span>img src=&quot;path&quot;alt=&quot;text&quot;title=&quot;&quot;width=&quot;x&quot;height=&quot;y/&quot;&gt;</span></strong></p></blockquote><h3 id='src必填'><span>src(必填)</span></h3><h4 id='相对地址'><span>相对地址</span></h4><blockquote><p><span>从盘符开始写的完整路径(不推荐)</span></p></blockquote><h4 id='绝对地址'><span>绝对地址</span></h4><blockquote><p><span>使用</span><span>.</span><span>./（回到上一级）</span></p></blockquote><p>&nbsp;</p><p><span>比如在HTML同一级文件夹下建立resources文件夹储存图片，这样使用</span><span>.</span><span>./便可直接进入目标文件夹</span></p><h3 id='alt必填）'><span>alt（必填）</span></h3><blockquote><p><span>若找不到目标图片，使用alt的内容代替</span></p></blockquote><h3 id='title'><span>title</span></h3><blockquote><p><span>鼠标悬停的时候显示的文字</span></p></blockquote><h3 id='width和height'><span>width和height</span></h3><blockquote><p><span>高度和宽度</span></p></blockquote><p>&nbsp;</p><p>&nbsp;</p><h1 id='center链接标签center'><center><span>链接标签</span></center></h1><blockquote><p><strong><span>&lt;</span><span>a href=&quot;path&quot; target=“”&gt;&quot;</span>&nbsp;<span>&quot;</span><span>&lt;</span><span>a/&gt;</span></strong></p></blockquote><h2 id='href必填'><span>href(必填)</span></h2><p><span>表示要跳转到的画面</span>
+<span>如</span></p><blockquote><p><span>href</span><span>&lt;</span><span>a href=</span><a href='https://www.baidu.com' target='_blank' class='url'>https://www.baidu.com</a><span>&gt;\点击我解决一切问题</span><span>&lt;</span><span>/a&gt;</span>
+<span>href</span><a href="https://www.baidu.com" target="_blank" ><span>点击我解决一切问题</span></a></p></blockquote><h2 id='target'><span>target</span></h2><p><span>表示窗口在哪里打开</span></p><blockquote><p><span>target=&quot;</span><span>_</span><span>blank&quot; 表示在新页面打开</span>
+<span>target=&quot;_self&quot; 在自身网页打开</span></p></blockquote><h1 id='center超链接center'><center><span>超链接</span></center></h1><h2 id='页面间链接'><span>页面间链接</span></h2><blockquote><p><span>从一个页面链接到另一个页面</span></p></blockquote><h2 id='锚链接'><span>锚链接</span></h2><blockquote><ol start='' ><li><span>需要一个标记</span></li><li><span>跳转到标记(href+后面要加上一个#)</span></li></ol></blockquote><p>&nbsp;</p><p><span>建立标签:</span><span>&lt;</span><span>a id=&quot;我带你们打&quot;&gt;</span><span>&lt;</span><span>/a&gt;</span>
+<span>回到标签</span><span>&lt;</span><span>a href=&quot;#我带你们打&quot;&gt;感恩的话</span><span>&lt;</span><span>/a&gt;</span></p><h2 id='功能性链接'><span>功能性链接</span></h2><blockquote><p><span>邮件链接: \</span><a href='mailto:mailto:XXXXXXXX@xx.com' target='_blank' class='url'>mailto:XXXXXXXX@xx.com</a></p></blockquote><p>&nbsp;</p><p><span>&lt;</span><span>a href=&quot;</span><a href='mailto:mailto:xxxxxxxxx@xx.com' target='_blank' class='url'>mailto:xxxxxxxxx@xx.com</a><span>&quot;&gt;点击联系我</span></a></p><p>&nbsp;</p><blockquote><p><span>QQ链接</span></p></blockquote><h1 id='center行内元素和块元素center'><center><span>行内元素和块元素</span></center></h1><h2 id='块元素'><span>块元素</span></h2><blockquote><p><span>无论内容多少，该元素独占一行</span>
+<span>(p、h1-h6)</span></p></blockquote><h2 id='行内元素'><span>行内元素 </span></h2><blockquote><p><span>内容撑开宽度，左右都是行内元素的可以排在一行</span>
+<span>(a、strong、em) </span></p></blockquote><h1 id='center列表标签center'><center><span>列表标签</span></center></h1><h2 id='无序列表'><span>无序列表</span></h2><blockquote><p><span>&lt;</span><span>ul&gt;</span><span>&lt;</span><span>li&gt;第一个元素</span><span>&lt;</span><span>/li&gt;</span><span>&lt;</span><span>li&gt;第二个元素</span><span>&lt;</span><span>/li&gt;</span><span>&lt;</span><span>li&gt;第三个元素</span><span>&lt;</span><span>/li&gt;</span><span>&lt;</span><span>li&gt;第四个元素</span><span>&lt;</span><span>/li&gt;</span><span>&lt;</span><span>/ul&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果：</span></p><ul>
+<li>第一个元素</li>
+<li>第二个元素</li>
+<li>第三个元素</li>
+<li>第四个元素</li>
+</ul><h2 id='有序列表'><span>有序列表</span></h2><blockquote><p><span>&lt;</span><span>ol&gt;</span><span>&lt;</span><span>li&gt;第一个元素</span><span>&lt;</span><span>/li&gt;</span><span>&lt;</span><span>li&gt;第二个元素</span><span>&lt;</span><span>/li&gt;</span><span>&lt;</span><span>li&gt;第三个元素</span><span>&lt;</span><span>/li&gt;</span><span>&lt;</span><span>li&gt;第四个元素</span><span>&lt;</span><span>/li&gt;</span><span>&lt;</span><span>/ol&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果:</span></p><ol>
+<li>第一个元素</li>
+<li>第二个元素</li>
+<li>第三个元素</li>
+<li>第四个元素</li>
+</ol><h2 id='自定义列表'><span>自定义列表</span></h2><blockquote><p><span>&lt;</span><span>dl&gt;</span><span>&lt;</span><span>dt&gt;这是列表的名字</span><span>&lt;</span><span>/dt&gt;</span><span>&lt;</span><span>dd&gt;第一个元素</span><span>&lt;</span><span>/dd&gt;</span><span>&lt;</span><span>dd&gt;第二个元素</span><span>&lt;</span><span>/dd&gt;</span><span>&lt;</span><span>dd&gt;第三个元素</span><span>&lt;</span><span>/dd&gt;</span><span>&lt;</span><span>dd&gt;第四个元素</span><span>&lt;</span><span>/dd&gt;</span><span>&lt;</span><span>/dl&gt;\</span>
+<span>其中</span><strong><span>&lt;</span><span>dt&gt;Title</span><span>&lt;</span><span>/dt&gt;</span></strong><span>表示</span><strong><span>列表名称</span></strong></p></blockquote><dl>
+<dt>这是列表的名字</dt>
+<dd>第一个元素</dd>
+<dd>第二个元素</dd>
+<dd>第三个元素</dd>
+<dd>第四个元素</dd>
+</dl><blockquote><p><span>应用：公司网站底部</span></p></blockquote><p>&nbsp;</p><h1 id='center表格标签center'><center><span>表格标签</span></center></h1><blockquote><ol>
+<li>单元格</li>
+<li>行</li>
+<li>列</li>
+<li>跨行</li>
+<li>跨列</li>
+</ol></blockquote><h2 id='行'><span>行</span></h2><blockquote><p><strong><tr></tr></strong></p></blockquote><h2 id='列'><span>列</span></h2><blockquote><p><strong><td></td></strong></p></blockquote><blockquote><p><span>&lt;</span><span>table &gt;</span>
+<tr>
+<span>	</span><td><span>1-1</span></td>
+<span>	</span><td><span>1-2</span></td>
+<span>	</span><td><span>1-3</span></td>
+</tr>
+<tr>
+<span>	</span><td><span>2-1</span></td>
+<span>	</span><td><span>2-2</span></td>
+<span>	</span><td><span>2-3</span></td>
+</tr>
+<tr>
+<span>	</span><td><span>3-1</span></td>
+<span>	</span><td><span>3-2</span></td>
+<span>	</span><td><span>3-3</span></td>
+</tr>
+<span>&lt;</span><span>/table&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果：</span></p><table>
+	<tbody><tr>
+		<td>1-1</td>
+		<td>1-2</td>
+		<td>1-3</td>
+	</tr>
+	<tr>
+		<td>2-1</td>
+		<td>2-2</td>
+		<td>2-3</td>
+	</tr>
+	<tr>
+		<td>3-1</td>
+		<td>3-2</td>
+		<td>3-3</td>
+	</tr>
+</tbody></table><h2 id='跨行跨列'><span>跨行跨列</span></h2><blockquote><p><strong><span>使用colspan和rowspan</span></strong>
+<span>&lt;</span><span>table &gt;</span>
+<tr>
+<span>	</span><td colspan="3"><span>1-1</span></td>
+</tr>
+<tr>
+<span>	</span><td rowspan="2"><span>2-1</span></td>
+<span>	</span><td><span>2-2</span></td>
+<span>	</span><td><span>2-3</span></td>
+</tr>
+<tr>
+<span>	</span><td><span>3-1</span></td>
+<span>	</span><td><span>3-2</span></td>
+<span>	</span><td><span>3-3</span></td>
+</tr>
+<span>&lt;</span><span>/table&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果：</span></p><table>
+	<tbody><tr>
+		<td colspan="3">1-1</td>
+	</tr>
+	<tr>
+		<td rowspan="2">2-1</td>
+		<td>2-2</td>
+		<td>2-3</td>
+	</tr>
+	<tr>
+		<td>3-2</td>
+		<td>3-3</td>
+	</tr>
+</tbody></table><h1 id='center媒体元素视频和音频center'><center><span>媒体元素:视频和音频</span></center></h1><h2 id='视频元素'><span>视频元素</span></h2><blockquote><p><span>&lt;</span><span>video src=&quot;&quot; controls autoplay&gt;</span><span>&lt;</span><span>/video&gt;</span>
+<span>src=&quot;资源路径&quot;</span>
+<span>controls：控制条</span>
+<span>aotoplay：自动播放</span></p></blockquote><h2 id='音频元素'><span>音频元素</span></h2><blockquote><blockquote><p><span>&lt;</span><span>audio src=&quot;&quot; controls autoplay&gt;</span><span>&lt;</span><span>/audio&gt;</span>
+<span>src=&quot;资源路径&quot;</span>
+<span>controls：控制条</span>
+<span>aotoplay：自动播放</span></p></blockquote></blockquote><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h1 id='center页面结构分析center'><center><span>页面结构分析</span></center></h1><p>&nbsp;</p><figure><table><thead><tr><th><span>元素名</span></th><th><span>描述</span></th></tr></thead><tbody><tr><td><span>header</span></td><td><span>标题头部区域的位置（用于页面或页面中的一块区域）</span></td></tr><tr><td><span>footer</span></td><td><span>标记脚部区域的内容（用于整个页面或页面的一块区域）</span></td></tr><tr><td><span>section</span></td><td><span>wed页面中的一块独立区域</span></td></tr><tr><td><span>srticle</span></td><td><span>独立的文章内容</span></td></tr><tr><td><span>aside</span></td><td><span>相关内容或应用</span></td></tr><tr><td><span>nav</span></td><td><span>导航类辅助内容</span></td></tr></tbody></table></figure><h1 id='centeriframe内联框架center'><center><span>iframe内联框架</span></center></h1><blockquote><p><span>&lt;</span><span>ifrma src=&quot;path&quot;frameborder=&quot;0&quot; width=&quot;300px&quot; height=&quot;300px&quot;name=&quot;mainFrame&quot;&gt;</span><span>&lt;</span><span>iframe&gt;</span></p></blockquote><h1 id='center表单语法center'><center><span>表单语法</span></center></h1><blockquote><p><span>&lt;</span><span>form method=&quot;post&quot; action=&quot;result.html&quot;&gt;</span>
+<span>&lt;</span><span>p&gt;名字：</span><span>&lt;</span><span>input name=&quot;name&quot;type=&quot;text&quot;&gt;</span><span>&lt;</span><span>/p&gt;</span>
+<span>&lt;</span><span>p&gt;密码：</span><span>&lt;</span><span>input name=&quot;pass&quot;type=&quot;password&quot;&gt;</span><span>&lt;</span><span>/p&gt;</span>
+<span>&lt;</span><span>p&gt;</span><span>&lt;</span><span>input type=&quot;submit&quot;name=&quot;Button&quot;value=&quot;提交&quot;/&gt;</span>
+<span>&lt;</span><span>input type=&quot;reset&quot;name=&quot;Reset&quot;value=&quot;重填&quot;/&gt;</span>
+<span>&lt;</span><span>/p&gt;</span>
+<span>&lt;</span><span>form&gt;</span></p></blockquote><p><span>效果：</span></p><p>名字：<input name="name" type="text"></p>
+<p>密码：<input name="pass" type="password"></p>
+<p><input type="submit" name="Button" value="提交">
+<input type="reset" name="Reset" value="重填">
+</p>
+<form></form><blockquote><p><span>action:表单提交的位置</span>
+<span>method：提交方式</span></p><blockquote><p><span>get方式：能在URL里看到表单信息，不安全</span>
+<span>post方式：不能，安全，能传输大文件</span>
+<span>input type=&quot;text&quot; name=&quot;&quot;：文本框输入提交</span>
+<span>input type=&quot;submit&quot;提交</span>
+<span>input type=&quot;reset&quot;重填</span></p></blockquote></blockquote><figure><table><thead><tr><th><span>属性</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>type</span></td><td><span>指定元素的类型。text，password，checkbox，radio，submit，reset，flie，hidden，image和button，默认为text.</span></td></tr><tr><td><span>name</span></td><td><span>指定表单元素的名称</span></td></tr><tr><td><span>size</span></td><td><span>指定表单元素的初始宽度。当type为text或password时，表单元素的大小以字符为单位。对于其他类型，宽度以像素为单位</span></td></tr><tr><td><span>maxlength</span></td><td><span>type为text或password时，输入的最大字符数</span></td></tr><tr><td><span>checked</span></td><td><span>type为radio或checkbox时，指定按钮是否被选中</span></td></tr><tr><td><span>value</span></td><td><span>元素的初始值。type为radio时必须指定一个值</span></td></tr></tbody></table></figure><h2 id='单选框标签'><span>单选框标签</span></h2><blockquote><p><span>&lt;</span><span>form action=&quot;result.html&quot;&gt;</span>
+<span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;radio&quot; value=&quot;boy&quot; name=&quot;sex&quot;/&gt;男</span>
+<span>&lt;</span><span>input type=&quot;radio&quot; value=&quot;girl&quot; name=&quot;sex&quot;/&gt;女</span>
+<span>&lt;</span><span>/p&gt;</span>
+<span>&lt;</span><span>/form&gt;</span>
+<span>其中name属性用来分组</span></p></blockquote><p><span>效果</span></p><form action="result.html">
+<p>
+性别:
+<input type="radio" value="boy" name="sex">男
+<input type="radio" value="girl" name="sex" checked="">女
+</p>
+</form><h2 id='多选框标签'><span>多选框标签</span></h2><blockquote><p><span>&lt;</span><span>form action=&quot;result.html&quot;&gt;</span>
+<span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;checkbox&quot; value=&quot;sleep&quot; name=&quot;hobby&quot;/&gt;睡觉</span>
+<span>&lt;</span><span>input type=&quot;checkbox&quot; value=&quot;code&quot; name=&quot;hobby&quot;/&gt;敲代码</span>
+<span>&lt;</span><span>input type=&quot;checkbox&quot; value=&quot;girl&quot; name=&quot;hobby&quot;/&gt;女生</span>
+<span>&lt;</span><span>input type=&quot;checkbox&quot; value=&quot;chat&quot; name=&quot;hobby&quot;/&gt;聊天</span>
+<span>&lt;</span><span>/p&gt;</span>
+<span>&lt;</span><span>/form&gt;</span></p></blockquote><form action="result.html">
+<p>
+<input type="checkbox" value="sleep" name="hobby">睡觉
+<input type="checkbox" value="code" name="hobby" checked="">敲代码
+<input type="checkbox" value="girl" name="hobby">女生
+<input type="checkbox" value="chat" name="hobby">聊天
+</p>
+</form><h2 id='按钮'><span>按钮</span></h2><blockquote><p><span>&lt;</span><span>form action=&quot;result.html&quot;&gt;</span>
+<span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;button&quot; value=&quot;点击变长&quot; name=&quot;Button&quot;/&gt;睡觉</span>
+<span>&lt;</span><span>/p&gt;</span>
+<span>&lt;</span><span>/form&gt;</span></p></blockquote><form action="result.html">
+<p>
+<input type="button" value="点击变长" name="Button">
+</p>
+</form><blockquote><p><span>&lt;</span><span>form action=&quot;result.html&quot;&gt;</span>
+<span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;image&quot;  src=&quot;&quot;  name=&quot;Button&quot;/&gt;</span><br/><span>&lt;</span><span>/p&gt;</span>
+<span>&lt;</span><span>/form&gt;</span></p></blockquote><p>&nbsp;</p><h1 id='列表框文本域和文件域'><span>列表框文本域和文件域</span></h1><h2 id='下拉框'><span>下拉框</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>	</span><span>&lt;</span><span>select name=&quot;列表名称&quot;&gt;</span>
+<span>		</span><span>&lt;</span><span>option value=&quot;选项的值&quot;&gt;中国</span></option>
+<span>		</span><span>&lt;</span><span>option value=&quot;选项的值&quot;&gt;美国</span></option>
+<span>		</span><span>&lt;</span><span>option value=&quot;选项的值&quot; selected&gt;英国</span></option>
+<span>	</span><span>&lt;</span><span>/select&gt;</span><span>	</span>
+<span>&lt;</span><span>/p&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果：</span></p><p>
+	<select name="列表名称">
+		<option value="选项的值">中国</option>
+		<option value="选项的值">美国</option>
+		<option value="选项的值" selected="">英国</option>
+	</select>	
+</p><h2 id='文本域'><span>文本域</span></h2><blockquote><p><span>&lt;</span><span>p&gt;反馈</span>
+<span>	</span><span>&lt;</span><span>textarea name=&quot;textarea&quot; cols=&quot;50&quot;rows=&quot;10&quot;&gt;文本内容/textarea&gt;</span>
+<span>&lt;</span><span>\p&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果：</span></p><p>反馈
+	<textarea name="textarea" cols="50" rows="10">文本内容</textarea>
+&lt;\p&gt;</p><h2 id='文件域'><span>文件域</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>	</span><span>&lt;</span><span>input type=file name=&quot;files&quot;&gt;</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51562px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">\&lt;input type="button" value="上传"name="upload"&gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>&lt;</span><span>/p&gt; </span></p></blockquote><p><span> </span></p><p><span>效果:</span></p><p>
+	<input type="“file”" name="files">
+	<input type="button" value="上传" name="upload">
+</p><p>&nbsp;</p><h1 id='搜索框滑块和简单验证'><span>搜索框滑块和简单验证</span></h1><h2 id='邮件验证'><span>邮件验证</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;</span><strong><span>email</span></strong><span>&quot;name=&quot;email&quot;&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果:</span></p><p>
+    <input type="email" value="请输入邮箱" name="email">
+</p><p>&nbsp;</p><h2 id='网址验证'><span>网址验证</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=“</span><strong><span>url</span></strong><span>&quot;name=&quot;email&quot;&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果:</span></p><p>
+    <input type="url" value="请输入网址" name="email">
+</p><h2 id='数字验证'><span>数字验证</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=“</span><strong><span>number</span></strong><span>&quot;name=&quot;numberl&quot;&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果:</span></p><p>
+    <input type="number" value="0000" max="100" min="0" name="number">
+</p><h2 id='滑块'><span>滑块</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;</span><strong><span>range</span></strong><span>&quot; min=&quot;0&quot; max=&quot;100&quot; name=&quot;voice&quot; &gt;\step=&quot;10&quot;&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果:</span></p><p>
+	<input type="range" min="0" max="100" name="voice" step="10">
+</p><h2 id='搜索'><span>搜索</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span> </span><span>&lt;</span><span>input type=&quot;</span><strong><span>search</span></strong><span>&quot;value=&quot;搜索内容&quot;name=&quot;search&quot;&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果：</span></p><p>
+	<input type="search" value="搜索内容" name="search">
+</p><h1 id='表单的应用'><span>表单的应用</span></h1><h2 id='隐藏域'><span>隐藏域</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;text&quot; value=&quot;admin&quot; hidden&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果：</span></p><p>
+<input type="text" value="admin" hidden="">
+</p><h2 id='只读'><span>只读</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;text&quot; value=&quot;admin&quot;</span><strong><span>readonly</span></strong><span>&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p><blockquote><p><span>无法更改</span></p></blockquote></blockquote><p>&nbsp;</p><p><span>效果：</span></p><p>
+<input type="text" value="admin" readonly="">
+</p><p>&nbsp;</p><h2 id='禁用'><span>禁用</span></h2><blockquote><p><span>&lt;</span><span>form action=&quot;result.html&quot;&gt;</span>
+<span>&lt;</span><span>p&gt;</span>
+<span>\性别:</span>
+<span>&lt;</span><span>input type=&quot;radio&quot; value=&quot;boy&quot; name=&quot;sex&quot;/&gt;男</span>
+<span>&lt;</span><span>input type=&quot;radio&quot; value=&quot;girl&quot; name=&quot;sex&quot; checked &gt;</span><span>*</span><strong><span>disabled*</span></strong><span>/&gt;女</span>
+<span>&lt;</span><span>/p&gt;</span>
+<span>&lt;</span><span>/form&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果：</span></p><form action="result.html">
+<p>
+性别:
+<input type="radio" value="boy" name="sex">男
+<input type="radio" value="girl" name="sex" checked="" disabled="">女
+</p>
+</form><p>&nbsp;</p><h2 id='增强鼠标可用性'><span>增强鼠标可用性</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><strong><span>label</span></strong><span> for=&quot;mark&quot;&gt;你点我试试</span><strong></label></strong>
+<span>&lt;</span><span>input type=&quot;text&quot; id=&quot;mark&quot;&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p></blockquote><p><span>效果：</span></p><p>
+<label for="mark">你点我试试</label>
+<input type="text" id="mark">
+</p><p>&nbsp;</p><h1 id='表单的初级验证'><span>表单的初级验证</span></h1><h2 id='palceholder-提示信息'><span>palceholder 提示信息</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;text&quot;name=&quot;username&quot;</span><strong><span>placeholder</span></strong><span>=&quot;请输入用户名&quot;&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果：</span></p><p>
+<input type="text" name="username" placeholder="请输入用户名">
+</p><h2 id='required--元素不能为空'><span>required  元素不能为空</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;text&quot;name=&quot;username&quot;placeholder=&quot;请输入&quot;required&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p></blockquote><p>&nbsp;</p><p><span>效果:</span></p><p>
+<input type="text" name="username" placeholder="请输入" required="">
+</p><h2 id='pattern-正则表达式'><span>pattern 正则表达式</span></h2><blockquote><p><span>&lt;</span><span>p&gt;</span>
+<span>&lt;</span><span>input type=&quot;text&quot;name=&quot;DIYmail&quot; pattern=&quot;正则表达式&quot;&gt;</span>
+<span>&lt;</span><span>/p&gt;</span></p><p><span>网站自行搜索</span></p></blockquote><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
